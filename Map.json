@@ -44,7 +44,7 @@
     },
     "tooltip": [
       {"field": "properties.name", "type": "nominal", "title": "State"},
-      {"field": "Population", "type": "quantitative"},
+      {"field": "Population", "type": "quantitative", "format": ".2s"},
       {"field": "Confirmed", "type": "quantitative"},
       {
         "field": "Confirmed per 10,000 population",
