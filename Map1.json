@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Total COVID-19 Cases in Malaysia",
+  "width": 800,
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/dxche5/FIT3179_A2/main/Malaysia_Polygon.json",
+    "format": {"type": "topojson", "feature": "Malaysia_Polygon"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/dxche5/FIT3179_A2/main/covid-19_my.csv"
+        },
+        "key": "State",
+        "fields": ["Population", "Confirmed", "Recovered", "Deaths"]
+      }
+    },
+    {
+      "calculate": "datum.Confirmed/datum.Population * 10000",
+      "as": "Confirmed per 10,000 population"
+    }
+  ],
+  "projection": {"type": "equirectangular"},
+  "mark": {"type": "geoshape"},
+  "encoding": {
+    "color": {
+      "field": "Confirmed per 10,000 population",
+      "type": "quantitative",
+      "scale": {
+        "type": "threshold",
+        "domain": [1, 5, 10, 15, 20],
+        "range": [
+          "#fee5d9",
+          "#fcbba1",
+          "#fc9272",
+          "#fb6a4a",
+          "#de2d26",
+          "#a50f15"
+        ]
+      }
+    },
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "State"},
+      {"field": "Population", "type": "quantitative", "format": ".2s"},
+      {"field": "Confirmed", "type": "quantitative"},
+      {
+        "field": "Confirmed per 10,000 population",
+        "type": "quantitative",
+        "format": ".2f"
+      },
+      {"field": "Recovered", "type": "quantitative"},
+      {"field": "Deaths", "type": "quantitative"}
+    ]
+  },
+  "config": {}
+}
