@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "COVID-19 Cases per State",
+  "repeat": ["Death rate", "Recovery rate"],
+  "columns": 2,
+  "spec": {
+    "data": {
+      "url": "https://raw.githubusercontent.com/dxche5/FIT3179_A2/main/covid-19_my.csv"
+    },
+    "mark": "bar",
+    "transform": [
+      {
+        "calculate": "datum.Confirmed-datum.Recovered-datum.Deaths",
+        "as": "Active"
+      },
+      {
+        "calculate": "datum.Confirmed/datum.Population * 10000",
+        "as": "Confirmed per 10,000 population"
+      },
+      {"calculate": "datum.Deaths/datum.Confirmed * 100", "as": "Death rate"},
+      {
+        "calculate": "datum.Recovered/datum.Confirmed * 100",
+        "as": "Recovery rate"
+      },
+      {
+        "calculate": "datum.Active/datum.Population * 10000",
+        "as": "Active per 10,000 population"
+      }
+    ],
+    "encoding": {
+      "x": {"field": "State"},
+      "y": {"aggregate": "sum", "field": {"repeat": "repeat"}},
+      "color": {"value": "#fc9272"},
+      "tooltip": [
+        {"field": "State", "type": "nominal"},
+        {
+          "field": "sum_Recovery rate",
+          "type": "quantitative",
+          "title": "Recovery Rate",
+          "format": ".2f"
+        },
+        {
+          "field": "sum_Death rate",
+          "type": "quantitative",
+          "title": "Death Rate",
+          "format": ".2f"
+        }
+      ]
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Type of Cases in Malaysia",
+  "width": 700,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/dxche5/FIT3179_A2/main/my_state2.csv"
+  },
+  "params": [
+    {
+      "name": "State_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Johor",
+          "Kedah",
+          "Kelantan",
+          "Kuala Lumpur",
+          "Labuan",
+          "Malacca",
+          "Negeri Sembilan",
+          "Pahang",
+          "Perak",
+          "Perlis",
+          "Penang",
+          "Putrajaya",
+          "Sabah",
+          "Sarawak",
+          "Selangor",
+          "Terengganu"
+        ],
+        "labels": [
+          "Show All",
+          "Johor",
+          "Kedah",
+          "Kelantan",
+          "Kuala Lumpur",
+          "Labuan",
+          "Malacca",
+          "Negeri Sembilan",
+          "Pahang",
+          "Perak",
+          "Perlis",
+          "Penang",
+          "Putrajaya",
+          "Sabah",
+          "Sarawak",
+          "Selangor",
+          "Terengganu"
+        ],
+        "name": "State Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "State_selection == null || datum.State == State_selection"}
+  ],
+  "selection": {
+    "type_highlight": {"type": "multi", "fields": ["Case"], "bind": "legend"}
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Value", "type": "quantitative", "title": "Cases"},
+    "y": {
+      "field": "State",
+      "type": "nominal",
+      "axis": {"offset": 5, "ticks": false, "minExtent": 60, "domain": false}
+    },
+    "color": {
+      "field": "Case",
+      "type": "nominal",
+      "title": "Type",
+      "scale": {
+        "domain": ["Deaths", "Recovered", "Active"],
+        "range": ["#c30d24", "#4d9221", "#2166ac"]
+      }
+    },
+    "opacity": {
+      "condition": {"selection": "type_highlight", "value": 0.6},
+      "value": 0.2
+    },
+    "tooltip": [
+      {"field": "State", "type": "nominal"},
+      {"field": "Case", "type": "nominal"},
+      {"field": "Value", "type": "quantitative"}
+    ]
+  },
+  "config": {}
+}
