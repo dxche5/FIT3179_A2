@@ -95,7 +95,7 @@
     <div class="pure-g">
       <div class="pure-u-1-1">
         <h1>COVID-19 pandemic in Malaysia</h1>
-        <p>This is a web page which shown the information of COVID-19 in Malaysia</p>
+        <p>This is a web page which shown the information of COVID-19 in Malaysia. (Latest update: 30/11/2020)</p>
       </div>
     </div>
   <!-- end pure grid group -->
@@ -103,24 +103,24 @@
     <!-- pure grid group -->
     <div class="pure-g">
         <div class="pure-u-2-3">
-          <h2>This is the first visualisation</h2>
+          <h3>Choropleth Map</h3>
+          <p>The confirmed cases in the choropleth map below is normalized with the population on each State. In the latest update, we can see that Sabah is still has the highest cases of Covid-19 in Malaysia.</p>
           <div id="vis1" class="vis-container"></div>
         </div>
     </div>
     <!-- end pure grid group -->
    
    <div class="tab">
-     <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
-     <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+     <button class="tablinks" onclick="openChart(event, 'Horizon Stacked Bar Chart')" id="defaultOpen">Horizon Stacked Bar Chart</button>
+     <button class="tablinks" onclick="openChart(event, 'Donut Chart')">Donut Chart</button>
    </div>
    
-   <div id="London" class="tabcontent">
-     <h3>London</h3>
-     <p>London is the capital city of England.</p>
+   <div id="Horizon Stacked Bar Chart" class="tabcontent">
      <!-- pure grid group -->
     <div class="pure-g">
         <div class="pure-u-2-3">
-            <h2>This is the second section</h2>
+            <h3>Horizon Stacked Bar Chart</h3>
+            <p>Horizon Stacked Bar Chart shown the difference of cases between each State in Malaysia. By choosing the "Show All" view, it shown the total cases in each State.</p>
           <div id="vis2"  class="vis-container"></div>
         </div>
       
@@ -128,13 +128,12 @@
     <!-- end pure grid group -->
    </div>
    
-   <div id="Paris" class="tabcontent">
-     <h3>Paris</h3>
-     <p>Paris is the capital of France.</p> 
+   <div id="Donut Chart" class="tabcontent">
      <!-- pure grid group -->
     <div class="pure-g">
         <div class="pure-u-2-3">
-            <h2>This is the second section</h2>
+            <h3>Donut Chart</h3>
+            <p>Donut Chart can provide a better visual for comparing each type of cases in specified State.</p>
           <div id="vis4"  class="vis-container"></div>
         </div>
       
@@ -149,8 +148,8 @@
     <div class="pure-g">
       <div class="pure-u-1-3">
         <div class="description description-left">
-          <h2>This is the third section</h2>
-          <p>Using all three columns without merging. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+          <h3>Death Rate VS Recovery Rate</h3>
+          <p>This bar chart calculated the rate of death and rate of recovery of each State for comparison.</p>
         </div>
       </div>
       <div class="pure-u-1-3">
@@ -164,7 +163,7 @@
   </div> <!-- end page -->
 
 <script>
-function openCity(evt, cityName) {
+function openChart(evt, chartName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -174,7 +173,7 @@ function openCity(evt, cityName) {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
-  document.getElementById(cityName).style.display = "block";
+  document.getElementById(chartName).style.display = "block";
   evt.currentTarget.className += " active";
 }
 
