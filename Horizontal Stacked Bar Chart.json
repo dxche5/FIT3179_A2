@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "title": "Type of Cases in Malaysia",
-  "width": 600,
-  "height": 400,
+  "width": 500,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/dxche5/FIT3179_A2/main/my_state2.csv"
   },
