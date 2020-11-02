@@ -83,11 +83,11 @@
       "title": "Type",
       "scale": {
         "domain": ["Deaths", "Recovered", "Active"],
-        "range": ["#000000", "#4d9221", "#c30d24"]
+        "range": ["#A50F15", "#FFB286", "#FB6A4A"]
       }
     },
     "opacity": {
-      "condition": {"selection": "type_highlight", "value": 0.6},
+      "condition": {"selection": "type_highlight", "value": 1},
       "value": 0.2
     },
     "tooltip": [
