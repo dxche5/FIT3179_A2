@@ -1,0 +1,91 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Type of Cases in Malaysia",
+  "width": 500,
+  "height": 300,
+  "params": [
+    {
+      "name": "State_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Malaysia",
+          "Johor",
+          "Kedah",
+          "Kelantan",
+          "Kuala Lumpur",
+          "Labuan",
+          "Malacca",
+          "Negeri Sembilan",
+          "Pahang",
+          "Perak",
+          "Perlis",
+          "Penang",
+          "Putrajaya",
+          "Sabah",
+          "Sarawak",
+          "Selangor",
+          "Terengganu"
+        ],
+        "labels": [
+          "Malaysia",
+          "Johor",
+          "Kedah",
+          "Kelantan",
+          "Kuala Lumpur",
+          "Labuan",
+          "Malacca",
+          "Negeri Sembilan",
+          "Pahang",
+          "Perak",
+          "Perlis",
+          "Penang",
+          "Putrajaya",
+          "Sabah",
+          "Sarawak",
+          "Selangor",
+          "Terengganu"
+        ],
+        "name": "State Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.State == 'Malaysia' && State_selection == null || datum.State == State_selection"
+    }
+  ],
+  "data": {
+    "url": "https://raw.githubusercontent.com/dxche5/FIT3179_A2/main/my_state3.csv"
+  },
+  "mark": {"type": "arc"},
+  "encoding": {
+    "theta": {"field": "Value", "type": "quantitative", "stack": true},
+    "color": {
+      "field": "Case",
+      "type": "nominal",
+      "legend": null,
+      "scale": {
+        "domain": ["Deaths", "Recovered", "Active"],
+        "range": ["#A50F15", "#FEE5D9", "#FB6A4A"]
+      }
+    },
+    "tooltip": [
+      {"field": "State", "type": "nominal"},
+      {"field": "Case", "type": "nominal"},
+      {"field": "Value", "type": "quantitative"}
+    ]
+  },
+  "layer": [
+    {"mark": {"type": "arc", "innerRadius": 60, "outerRadius": 140}},
+    {
+      "mark": {"type": "text", "radius": 165},
+      "encoding": {
+        "text": {"field": "Case", "type": "nominal"},
+        "fill": {"value": "#000000"}
+      }
+    }
+  ],
+  "view": {"stroke": null},
+  "config": {}
+}

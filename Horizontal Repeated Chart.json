@@ -1,14 +1,63 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "title": "COVID-19 Cases per State",
   "repeat": ["Death rate", "Recovery rate"],
   "columns": 2,
+  "params": [
+    {
+      "name": "State_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Johor",
+          "Kedah",
+          "Kelantan",
+          "Kuala Lumpur",
+          "Labuan",
+          "Malacca",
+          "Negeri Sembilan",
+          "Pahang",
+          "Perak",
+          "Perlis",
+          "Penang",
+          "Putrajaya",
+          "Sabah",
+          "Sarawak",
+          "Selangor",
+          "Terengganu"
+        ],
+        "labels": [
+          "Show All",
+          "Johor",
+          "Kedah",
+          "Kelantan",
+          "Kuala Lumpur",
+          "Labuan",
+          "Malacca",
+          "Negeri Sembilan",
+          "Pahang",
+          "Perak",
+          "Perlis",
+          "Penang",
+          "Putrajaya",
+          "Sabah",
+          "Sarawak",
+          "Selangor",
+          "Terengganu"
+        ],
+        "name": "State Selection: "
+      }
+    }
+  ],
   "spec": {
     "data": {
       "url": "https://raw.githubusercontent.com/dxche5/FIT3179_A2/main/covid-19_my.csv"
     },
     "mark": "bar",
+    "width": 300,
+    "height": 200,
     "transform": [
+      {"filter": "State_selection == null || datum.State == State_selection"},
       {
         "calculate": "datum.Confirmed-datum.Recovered-datum.Deaths",
         "as": "Active"
@@ -29,18 +78,18 @@
     ],
     "encoding": {
       "x": {"field": "State"},
-      "y": {"aggregate": "sum", "field": {"repeat": "repeat"}},
-      "color": {"value": "#fc9272"},
+      "y": {"aggregate": "mean", "field": {"repeat": "repeat"}},
+      "fill": {"value": "#FB6A4A"},
       "tooltip": [
         {"field": "State", "type": "nominal"},
         {
-          "field": "sum_Recovery rate",
+          "field": "mean_Recovery rate",
           "type": "quantitative",
           "title": "Recovery Rate",
           "format": ".2f"
         },
         {
-          "field": "sum_Death rate",
+          "field": "mean_Death rate",
           "type": "quantitative",
           "title": "Death Rate",
           "format": ".2f"
