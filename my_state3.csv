@@ -1,0 +1,52 @@
+State,Case,Value
+Johor,Active,65
+Johor,Deaths,21
+Johor,Recovered,811
+Kedah,Active,184
+Kedah,Deaths,8
+Kedah,Recovered,1926
+Kelantan,Active,6
+Kelantan,Deaths,3
+Kelantan,Recovered,170
+Kuala Lumpur,Active,165
+Kuala Lumpur,Deaths,19
+Kuala Lumpur,Recovered,2849
+Labuan,Active,286
+Labuan,Deaths,2
+Labuan,Recovered,104
+Malacca,Active,33
+Malacca,Deaths,5
+Malacca,Recovered,270
+Negeri Sembilan,Active,458
+Negeri Sembilan,Deaths,8
+Negeri Sembilan,Recovered,1116
+Pahang,Active,4
+Pahang,Deaths,7
+Pahang,Recovered,382
+Penang,Active,287
+Penang,Deaths,3
+Penang,Recovered,667
+Perak,Active,121
+Perak,Deaths,7
+Perak,Recovered,367
+Perlis,Active,0
+Perlis,Deaths,2
+Perlis,Recovered,36
+Putrajaya,Active,21
+Putrajaya,Deaths,1
+Putrajaya,Recovered,121
+Sabah,Active,8256
+Sabah,Deaths,114
+Sabah,Recovered,5683
+Sarawak,Active,94
+Sarawak,Deaths,19
+Sarawak,Recovered,743
+Selangor,Active,1105
+Selangor,Deaths,26
+Selangor,Recovered,3364
+Terengganu,Active,33
+Terengganu,Deaths,1
+Terengganu,Recovered,158
+Malaysia,Active,11118
+Malaysia,Deaths,246
+Malaysia,Recovered,18767
